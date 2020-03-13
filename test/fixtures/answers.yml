@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  engineer_id: 
+  title: MyString
+  answer: MyText
+  status: 
+
+two:
+  engineer_id: 
+  title: MyString
+  answer: MyText
+  status: 

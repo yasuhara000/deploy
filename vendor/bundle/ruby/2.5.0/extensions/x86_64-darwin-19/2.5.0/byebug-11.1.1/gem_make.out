@@ -1,0 +1,19 @@
+current directory: /Users/kazuma/Desktop/work/vagrant/engineers/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.1/ext/byebug
+/Users/kazuma/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20200312-23210-115gpim.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kazuma/Desktop/work/vagrant/engineers/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/kazuma/Desktop/work/vagrant/engineers/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/kazuma/Desktop/work/vagrant/engineers/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.1/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20200312-23210-1qbfq3j/byebug
