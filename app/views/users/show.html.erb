@@ -1,0 +1,5 @@
+<%=@user.nickname%>
+<%=@user.profile%>
+<% @questions.each do |f|%>
+    <%= link_to f.title,question_path(f.id)%>
+<%end%>

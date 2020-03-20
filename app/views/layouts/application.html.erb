@@ -7,6 +7,34 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <ul>
+    <% if user_signed_in? %>
+    <li class="login-name">こんにちは<%= current_user.email %>さん</li>
+    <li><%= link_to "トップページ", root_path%></li>
+    <li><%= link_to "マイページ", user_path(current_user)%></li>
+    <li><%= link_to "質問する", new_question_path%></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out'%></li>
+    
+    <!-- 管理者ログイン中 -->
+    <% elsif engineer_signed_in? %>
+    <li class="login-name">こんにちは管理者<%= current_engineer.id %>さん</li>
+    <li><%= link_to "トップページ", root_path%></li>
+    <li><%= link_to "マイページ", engineer_path(current_engineer)%></li>
+    <li><%= link_to "ログアウト", destroy_engineer_session_path, method: :delete%></li>
+    <div class="input-group">
+    
+    </div>
+    <!-- ログアウト中 -->
+    <% else %>
+    <li class="login-name">こんにちはゲストさん</li>
+    <li><%= link_to "トップページ", root_path %></li>
+    <li><%= link_to "アバウト", home_path%></li>
+    <li><%= link_to "会員登録", new_user_registration_path%></li>
+    <li><%= link_to "ログイン", user_session_path%></li>
+    <li><%= link_to "エンジニアとしてログイン", engineer_session_path%></li>
+    
+    <% end %>
+  </ul>
   </head>
 
   <body>

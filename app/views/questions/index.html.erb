@@ -1,0 +1,8 @@
+<h1>質問一覧</h1>
+<table>
+    <% @questions.each do |question| %>
+        <tr>
+        <td><%= question.title %></td>
+        </tr>
+    <%end%>
+</table>

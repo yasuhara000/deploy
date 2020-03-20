@@ -1,0 +1,14 @@
+<%= form_for(@engineer,url:engineer_path) do |f| %>
+    <table>
+    <tr>
+        <td><%= f.label :nickname ,"name"%></td>
+        <td><%= f.text_field :nickname %></td>
+    </tr>
+    <tr>
+        <td><%= f.label :profile ,"profile"%></td>
+        <td><%= f.text_area :profile %></td>
+    </tr>
+        <td><%= f.submit "Edit"%></td>
+    </table>
+    <%end%>
+    

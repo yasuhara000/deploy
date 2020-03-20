@@ -1,0 +1,20 @@
+<h1>質問詳細</h1>
+<tabel>
+<tr>
+<td>user</td>
+<td><%= @question.user.first_name%><%= @question.user.last_name%><td>
+<tr>
+<td>title</td>
+<td><%= @question.title%></td>
+</tr>
+<tr>
+<td>question</td>
+<td><%= @question.question%></td>
+</tr>
+</table>
+<p>answer</p>
+<% @answer.each do |ans| %>
+    <%= ans.engineer.nickname%>
+    <%= ans.answer%>
+<%end%>
+

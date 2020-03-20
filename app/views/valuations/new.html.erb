@@ -1,0 +1,30 @@
+<%= form_for(@valuation,url:engineer_valuations_path ) do |f| %>
+    <div id="star"></div>
+    <%= f.hidden_field :status, id: :review_star %>
+
+    <table>
+    <tr>
+        <td><%= f.label :title ,"title"%></td>
+        <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+        <td><%= f.label :comment ,"comment"%></td>
+        <td><%= f.text_area :comment %></td>
+    </tr>
+    <tr>
+        <td><%= f.label :status ,"評価"%></td>
+        <td><%= f.text_area :status %></td>
+    </tr>
+        <td><%= f.submit "評価をつける"%></td>
+    </table>
+    <%end%>
+    
+    <script>
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      scoreName: 'review[star]' 
+    });
+    </script>
+        

@@ -10,10 +10,16 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
 }
+root to: "home#about"
 resources :users, only: [:show, :edit, :update]
-resources :engineers, only: [:show, :edit, :update]
-resources :questions, only: [:new,:show,:index,:create, :edit, :update]
-resources :answers, only: [:new,:show,:create, :edit, :update]
-root to: 'questions#index'
+resources :engineers, only: [:show, :edit, :update] do 
+  resource :valuations, only:[:new, :index, :create]
+end
+
+resources :questions, only: [:new,:show,:index,:create, :edit, :update] do
+  resources :answers, only: [:new,:show,:create, :edit, :update]
+end
+
+get 'home' => "home#about", as: 'home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,15 @@
+<h1>解答編集</h1>
+<%= form_for(@answer,:url => {controller: "answers", :action => :update}) do |f| %>
+<table>
+<tr>
+    <td><%= f.label :title ,"title"%></td>
+    <td><%= f.text_field :title %></td>
+</tr>
+<tr>
+    <td><%= f.label :answer ,"answer"%></td>
+    <td><%= f.text_area :answer %></td>
+</tr>
+    <%= f.hidden_field :question_id, :value =>@question.id%>
+    <td><%= f.submit "Edit"%></td>
+</table>
+<%end%>

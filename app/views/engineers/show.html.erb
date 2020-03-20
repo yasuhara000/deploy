@@ -1,0 +1,5 @@
+<%=@engineer.nickname%>
+<%=@engineer.profile%>
+<% @answers.each do |answer|%>
+    <%= link_to answer.question.title,question_path(answer.question.id)%>
+<%end%>

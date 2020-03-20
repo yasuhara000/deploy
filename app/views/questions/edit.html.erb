@@ -1,0 +1,14 @@
+<h1>質問投稿</h1>
+<%= form_for(@question,url:question_path) do |f| %>
+<table>
+<tr>
+    <td><%= f.label :title ,"title"%></td>
+    <td><%= f.text_field :title %></td>
+</tr>
+<tr>
+    <td><%= f.label :question ,"question"%></td>
+    <td><%= f.text_area :question %></td>
+</tr>
+    <td><%= f.submit "質問投稿"%></td>
+</table>
+<%end%>
