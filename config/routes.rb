@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 root to: "home#about"
 resources :users, only: [:show, :edit, :update]
 resources :engineers, only: [:show, :edit, :update] do 
-  resource :valuations, only:[:new, :index, :create]
+  resources :valuations, only:[:new, :index, :create]
 end
 
 resources :questions, only: [:new,:show,:index,:create, :edit, :update] do

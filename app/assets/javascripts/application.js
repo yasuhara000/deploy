@@ -16,7 +16,7 @@
 //= require_tree .
 //= require jquery 
 //= require jquery_ujs 
-
+//= require bootstrap
 /*!
  * jQuery Raty - A Star Rating Plugin
  *

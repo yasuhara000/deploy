@@ -7,11 +7,12 @@ class ValuationsController < ApplicationController
         @valuation = Valuation.new(params_valuation)
         @valuation.user_id = current_user.id
         @valuation.engineer_id = params[:engineer_id]
+        @valuation.status = params[:review][:star]
         @valuation.save!
         redirect_to engineer_valuations_path
     end
     def index
-        @valuations = Valuation.where(engineer_id:params[:id])
+        @valuations = Valuation.where(engineer_id:params[:engineer_id])
     end
     def params_valuation
         params.require(:valuation).permit(:title, :comment,:status)

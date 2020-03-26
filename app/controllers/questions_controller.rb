@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+    #impressionist :actions=> [:show]
+
     def new
         @question = Question.new
     end
@@ -14,6 +16,8 @@ class QuestionsController < ApplicationController
 
     def show
         @question = Question.find(params[:id])
+        #impressionist(@question, nil, :unique => [:session_hash])
+
         @answer = Answer.where(question_id:params[:id])
     end
     
@@ -27,7 +31,7 @@ class QuestionsController < ApplicationController
         redirect_to question_path(@question.id)
     end
     def index
-        @questions = Question.all
+        @questions = Question.order('impressions_count DESC')
     end
 
     private

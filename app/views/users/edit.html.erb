@@ -1,6 +1,9 @@
 <%= form_for(@user,url:user_path) do |f| %>
     <table>
     <tr>
+    <td><%= f.attachment_field :profile_image %></td>
+    </tr>
+    <tr>
         <td><%= f.label :nickname ,"name"%></td>
         <td><%= f.text_field :nickname %></td>
     </tr>
