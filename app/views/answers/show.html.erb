@@ -1,7 +1,7 @@
 <div class ="container">
 <div class ="row">
 <div class ="answer">
-<%if @answer.status == true and @answer.engineer.valuation.presence? %>
+<%if @answer.status == true  %>
     <h2 class ="best">Best Answer!</h2>
     <%= form_tag(new_engineer_valuation_path(@answer.engineer_id), method: "get") do %>
         <%= hidden_field_tag :engineer_id , @answer.engineer_id %>

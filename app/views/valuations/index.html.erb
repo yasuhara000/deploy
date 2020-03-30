@@ -9,20 +9,21 @@
            <span>comment</span>
             <span><%=f.comment%></span><br />
             Star
-            <span id="star-rate-<%= f.status %>"></span>　<%=f.status%>point<br/>
-        
+            <span id="star-rate-<%= f.id %>"></span>　<%=f.status%>point<br/>
+            <script>
+            $('#star-rate-<%= f.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= f.status %>,
+            });
+            </script>  
     </div>
-<script>
-$('#star-rate-<%= f.status %>').raty({
-  size: 36,
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  starHalf: '<%= asset_path('star-half.png') %>',
-  half: true,
-  readOnly: true,
-  score: <%= f.status %>,
-});
-</script>  
+
+ 
 <%end%>
 </div>
 </div>
