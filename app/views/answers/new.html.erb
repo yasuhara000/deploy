@@ -1,14 +1,27 @@
-<h1>解答投稿</h1>
-<%= form_for(@answer,url:question_answers_path ) do |f| %>
-<table>
-<tr>
-    <td><%= f.label :title ,"title"%></td>
-    <td><%= f.text_field :title %></td>
-</tr>
-<tr>
-    <td><%= f.label :answer ,"answer"%></td>
-    <td><%= f.text_area :answer %></td>
-</tr>
-    <td><%= f.submit "質問投稿"%></td>
-</table>
+<h1 class = "title-answer">Answer New</h1>
+<%= form_for(@answer,url:answers_path) do |f| %>
+    <div class ="answer-table">
+    <table class ="table">
+    <tr>
+        <td><%= f.label :title ,"title"%></td>
+        <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+        <td><%= f.label :answer ,"answer"%></td>
+        <td><%= f.text_area :answer %></td>
+    </tr>
+    
+    <tr>
+        <td></td>
+        <%= f.hidden_field :status , :value => false %>
+        <%= f.hidden_field :question_id , :value => @question.id %>
+        <td class ="text-center"><%= f.submit "answer",class:"submit-answer"%></td>
+    </tr>
+        
+    </table>
+    </div>
 <%end%>
+
+
+
+

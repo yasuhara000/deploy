@@ -1,8 +1,16 @@
+
+    <h1 class ='engineer-edit-title'>Profile Edit</h1>
+<div class = "engineer-edit">
+<div class ="container">
+
+ <div class ="row">
 <%= form_for(@engineer,url:engineer_path) do |f| %>
-    <table>
-    <tr>
-        <td><%= f.attachment_field :profile_image %></td>
-    </tr>
+    <div class ="col-xs-5">
+    <%= f.attachment_field :profile_image %>
+    </div>
+    <div class = "col-xs-7">
+    <table class ="table">
+
     <tr>
         <td><%= f.label :nickname ,"name"%></td>
         <td><%= f.text_field :nickname %></td>
@@ -11,7 +19,12 @@
         <td><%= f.label :profile ,"profile"%></td>
         <td><%= f.text_area :profile %></td>
     </tr>
-        <td><%= f.submit "Edit"%></td>
+        <td></td>
+        <td colspan ="2" class="text-center"><%= f.submit "Edit" ,class: "engineer-submit"%></td>
     </table>
-    <%end%>
+    </div>
+<%end%>
+</div>
+</div>
+</div>
     

@@ -1,21 +1,77 @@
-<h1>質問詳細</h1>
-<tabel>
-<tr>
-<td>user</td>
-<td><%= @question.user.first_name%><%= @question.user.last_name%><td>
-<tr>
-<td>title</td>
-<td><%= @question.title%></td>
-</tr>
-<tr>
-<td>question</td>
-<td><%= @question.question%></td>
-</tr>
-</table>
-<p>answer</p>
-<% @answer.each do |ans| %>
-    <%= ans.engineer.nickname%>
-    <%= ans.answer%>
-<%end%>
-<%=  @question.impressions_count %>
+<div class ='container'>
+    <div class ='row'>
+  
+                <div class ="col-xs-2">
+                    <h1>Question </h1>
+                    <div  class ="question-td">Name</div><br />
+                    <div  class ="question-td">Tag</div><br />
+                    <div  class ="question-td">Title</div><br />
+                    <div class ="question-td">Question</div><br />
+                    <%if engineer_signed_in? %>
+                    <%= form_tag(new_answer_path, method: "get") do %>
+                            <%= hidden_field_tag :question_id , @question.id %>
+                            <%= submit_tag "この質問に解答する"  ,class: "answer-submit1"%> 
+                        <%end%>
+                    <%end%>
+                    <%if @question.user_id == current_user %>
+                        <div class ="question-edit>"><%= link_to "Edit",edit_question_path(@question.id) ,class: "question-edit"%></div>
+                    <%end%>
+                </div>
+                <div class ="col-xs-4 question-text">
+                    <div class ="question-td">
+                        <span class ="PV">PV数<%=  @question.impressions_count %></span>
+                    </div>
+                    <div class ="question-td">
+                        <%= @question.user.nickname%>
+                    </div>
+                            <div class ="question-td question-tag">
+                                <% @question.tags.each do |tag| %>
+                                    <%= tag.name %>
+                                <% end %><br/>
+                            </div>
+                            <div class ="question-title">
+                                <%= @question.title%> <br/>
+                            </div>
+                        
+                                <div class="box7 ">
+                                    <span class ="question-question"><%= @question.question%></span>
+                                </div>
+                </div>
+                
+        <div class ="col-xs-6">
+        <h1>Answers</h1>
+            <table class ="table">
+                    <tr>
+                        <td></td>
+                        <td>name</td>
+                        <td>title</td>
+                        <td>いいね数</td>
+                        <td>status</td>
+                    </tr>
+                    <% @answer.each do |ans|%>
+                    <tr>
+                        <td><%= attachment_image_tag ans.engineer, :profile_image,format:'jpeg',size: "30x30" %></td>
+                        <td>
+                        <%= link_to ans.engineer.nickname,engineer_path(ans.engineer.id)%>
+                        </td>
+                        
+                        <td><%= link_to ans.title,answer_path( ans.id) %></td>
+                        
+                        <td class ="text-center">
+                            <%= ans.likes.length %>
+                        </td>
+                        <td>
+                            <%if ans.status == true%>
+                                <span>best</span>
+                            
+                            <%end%>
+                        </td>
+                    </tr>
+                    <%end%>
+               
+            </table>
+        </div>
+        
 
+</div>
+</div>

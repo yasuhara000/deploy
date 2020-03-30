@@ -1,15 +1,28 @@
-<h1>評価一覧</h1>
-<table>
-<% @valuations.each do |f| %>
-<tr>
-    <td><%=f.title%></td>
-</tr>
-<tr>
-    <td><%=f.comment%></td>
-</tr>
-<tr>
-    <td><%=f.status%></td>
-</tr>
-<%end%>
-</table>
 
+
+<div class ="container">
+<div class ="row">
+<h1 class ="text-center valuations-title">valuation</h1>
+
+<% @valuations.each do |f| %>
+    <div class ="valuation text-center">
+           <span>comment</span>
+            <span><%=f.comment%></span><br />
+            Star
+            <span id="star-rate-<%= f.status %>"></span>　<%=f.status%>point<br/>
+        
+    </div>
+<script>
+$('#star-rate-<%= f.status %>').raty({
+  size: 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  half: true,
+  readOnly: true,
+  score: <%= f.status %>,
+});
+</script>  
+<%end%>
+</div>
+</div>

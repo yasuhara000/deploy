@@ -1,3 +1,33 @@
 // Place all the styles related to the valuations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.valuation-table{
+    margin-top: 130px;
+}
+.engineer-name{
+    font-size: 25px;
+    margin-top: 50px;
+    margin-left:20px;
+}
+.valuation-submit{
+    padding-left: 30px;
+    padding-right:30px;
+}
+.valuation {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    margin-left: 140px;
+    margin-right:140px;
+}
+.box2 p {
+    margin: 0; 
+    padding: 0;
+}
+.valuations-title{
+    color: #6091d3;
+}

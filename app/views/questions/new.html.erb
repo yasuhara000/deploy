@@ -1,14 +1,37 @@
-<h1>質問投稿</h1>
+
+<div class ="container">
+<h1 class ="question-title">Question New</h1>
+<div class ="row">
+<div class ="question-table">
+<table class ="table">
 <%= form_for(@question,url:questions_path) do |f| %>
-<table>
+  <tr> 
+  <td>label</td>
+  <td>
+  <%=f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <%= tag.label do %>
+            <%= tag.check_box %>
+            <%= tag.text %>
+          <% end %>    
+    <%end%>
+    </td>
+  </tr>
 <tr>
     <td><%= f.label :title ,"title"%></td>
-    <td><%= f.text_field :title %></td>
+    <td class ="question-title"><%= f.text_field :title %></td>
 </tr>
 <tr>
     <td><%= f.label :question ,"question"%></td>
-    <td><%= f.text_area :question %></td>
+    <td><%= f.text_area :question , class:"form-control form" %></td>
 </tr>
-    <td><%= f.submit "質問投稿"%></td>
-</table>
+<tr>
+    <%= f.hidden_field :status , :value => "未解決" %>
+    <td></td>
+    <td class ="text-center"><%= f.submit "質問投稿" ,class: "question-submit"%></td>
+</tr>
 <%end%>
+</table>
+
+</div>
+</div>
+</div>

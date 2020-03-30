@@ -1,6 +1,8 @@
 class ValuationsController < ApplicationController
+    PER = 5
     def new
         @valuation = Valuation.new
+        @engineer = Engineer.find(params[:engineer_id])
     end
     
     def create
@@ -12,9 +14,9 @@ class ValuationsController < ApplicationController
         redirect_to engineer_valuations_path
     end
     def index
-        @valuations = Valuation.where(engineer_id:params[:engineer_id])
+        @valuations = Valuation.where(engineer_id:params[:engineer_id]).page(params[:page]).reverse_order.per(PER)
     end
     def params_valuation
-        params.require(:valuation).permit(:title, :comment,:status)
+        params.require(:valuation).permit(:title, :comment,:status,:engineer_id)
     end
 end

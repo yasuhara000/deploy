@@ -1,0 +1,10 @@
+<% if Like.find_by(user_id: current_user, answer_id: answer.id) %>
+  <%= link_to "/answers/#{answer.id}/likes", method: :delete,remote: true do %>
+    <i class="glyphicon glyphicon-heart" aria-hidden="true"style="color: red;"></i>
+  <% end %>
+<% else %>
+  <%= link_to "/answers/#{answer.id}/likes", method: :post, remote: true do%>
+    <i class="glyphicon glyphicon-heart-empty" aria-hidden="true"style="color: red;"></i>
+    <% end %>
+<% end %>
+<%= answer.likes.length %>

@@ -2,5 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .table{
-    margin-left: 120px;
+    margin: auto;
+    
+}
+.table-user{
+    margin-top: 30px;
+}
+.question{
+    margin-top: 20px;
+}
+.btn-info{
+    padding-left:100px;
+    padding-right:100px;
+}
+.text-user{
+    font-size: 20px;
+}
+.image-user{
+    margin-top:30px;
+}
+.name-user{
+    margin-top:60px;
+}
+.profile-user{
+    margin-top:60px;
+}
+.user-question{
+    margin-bottom: 25px;
+}
+.user-edit{
+    margin-top:150px;
+}
+#user_profile{
+    width:500px;
+    height:200px;
+}
+#user_nickname{
+    width:500px;
+}
+.user-edit-title{
+    margin-left: 50px;
+    margin-top:50px;
+}
+.user-submit{
+    padding-left: 240px;
+    padding-right:240px;
 }

@@ -17,9 +17,15 @@ resources :engineers, only: [:show, :edit, :update] do
 end
 
 resources :questions, only: [:new,:show,:index,:create, :edit, :update] do
-  resources :answers, only: [:new,:show,:create, :edit, :update]
+  
+  resource :likes, only: [:create, :destroy]
+  
 end
-
+resources :answers, only: [:new,:show,:create, :edit, :update,:index]
+post   '/answers/:id/likes' => 'likes#create',   as: 'like'
+delete 'answers/:id/likes' => 'likes#destroy', as: 'unlike'
 get 'home' => "home#about", as: 'home'
+get 'home/user_log' => "home#user_log", as:'user_log'
+get 'home/engineer_log' => "home#engineer_log", as:'engineer_log'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

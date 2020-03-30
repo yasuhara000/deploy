@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_093434) do
+ActiveRecord::Schema.define(version: 2020_03_28_134955) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "engineer_id"
     t.string "title"
     t.text "answer"
-    t.integer "status"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "question_id"
+    t.integer "likes_count"
   end
 
   create_table "engineers", force: :cascade do |t|
@@ -65,6 +66,22 @@ ActiveRecord::Schema.define(version: 2020_03_23_093434) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_post_tags_on_question_id"
+    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -73,6 +90,13 @@ ActiveRecord::Schema.define(version: 2020_03_23_093434) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "impressions_count"
+    t.string "language"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

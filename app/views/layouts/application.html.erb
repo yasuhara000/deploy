@@ -9,46 +9,37 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
     <body>
-   
-    
     <header class="header">
-  
-   
+    <span class="gp">　Gather　Programmer　</span>
     <ul class="navber-right">
     <% if user_signed_in? %>
-    <li class="login-name">こんにちは<%= current_user.email %>さん</li>
-    <li><%= link_to "トップページ", root_path,class: 'glyphicon glyphicon-home'%></li>
+    <li><%= link_to "Questions", questions_path ,class: ''%></li>
     <li><%= link_to "マイページ", user_path(current_user)%></li>
     <li><%= link_to "質問する", new_question_path%></li>
-    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out'%></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: ''%></li>
     
-    <!-- 管理者ログイン中 -->
+    <!-- エンジニアログイン中 -->
     <% elsif engineer_signed_in? %>
-    <li class="login-name">こんにちは管理者<%= current_engineer.id %>さん</li>
-    <li><%= link_to "トップページ", root_path,class: 'glyphicon glyphicon-home'%></li>
+    <li><%= link_to "Questions", questions_path ,class: ''%></li>
     <li><%= link_to "マイページ", engineer_path(current_engineer)%></li>
-    <li><%= link_to "ログアウト", destroy_engineer_session_path, method: :delete, class: 'glyphicon glyphicon-log-out'%></li>
+    <li><%= link_to "ログアウト", destroy_engineer_session_path, method: :delete, class: ''%></li>
     
     <!-- ログアウト中 -->
     <% else %>
-    <li class="login-name">こんにちはゲストさん</li>
-    <li><%= link_to "トップページ", root_path ,class: 'glyphicon glyphicon-home'%></li>
-    <li><%= link_to "会員登録", new_user_registration_path,class: 'glyphicon glyphicon-edit sign_up'%></li>
-    <li><%= link_to "エンジニア登録", new_engineer_registration_path,class: 'glyphicon glyphicon-edit sign_up'%></li>
-    <li><%= link_to "ログイン", user_session_path, class: 'glyphicon glyphicon-log-in'%></li>
-    <li><%= link_to "エンジニアとしてログイン", engineer_session_path, class: 'glyphicon glyphicon-log-in'%></li>
     
+    <li><%= link_to "トップページ", root_path ,class: ''%></li>
+    <li><%= link_to "Questions", questions_path ,class: ''%></li>
     <% end %>
   </ul>
   </header>
-  
-  
+
+  </body>
 
 
     <%= yield %>
-    <div class ='wrapper'>
+    
   <footer class = "footer">
    </footer>
-   </div>
-  </body>
+   
+
 </html>

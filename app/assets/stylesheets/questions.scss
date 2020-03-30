@@ -1,3 +1,82 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.image{
+    margin-right: 10px;
+}
+
+
+#question_question{
+    width:500px;
+    height:200px
+}
+#question_title{
+    width:500px;
+}
+
+.question-title{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.question-table{
+    margin-top:30px;
+}
+.question-submit{
+    padding-right: 220px;
+    padding-left: 220px;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+.question-edit-submit{
+    padding-right: 240px;
+    padding-left: 240px;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+.question-td{
+    font-size:20px;
+    margin-top: 20px;
+
+}
+.question-text{
+    margin-top:10px;
+    
+}
+.question-title{
+    margin-top:40px;
+    font-size:20px;
+
+}
+.question-edit{
+    font-size:20px;
+    padding-top: 40px;
+}
+.box7{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    margin-top: 60px;
+}
+.box7 p {
+    margin: 0; 
+    padding: 0;
+}
+.question-status{
+    color: red;
+}
+.question-tag{
+    margin-top:40px;
+}
+.answer-submit1{
+    margin-top:50px;
+    padding:10px;
+}
+.question-question{
+    font-size: 20px;
+}
+.PV{
+    color:#6091d3;
+}

@@ -1,1 +1,61 @@
-<h1>解答</h1>
+<div class ="container">
+<div class ="row">
+<div class ="answer">
+<%if @answer.status == true and @answer.engineer.valuation.presence? %>
+    <h2 class ="best">Best Answer!</h2>
+    <%= form_tag(new_engineer_valuation_path(@answer.engineer_id), method: "get") do %>
+        <%= hidden_field_tag :engineer_id , @answer.engineer_id %>
+        <%= hidden_field_tag :user_id, @answer.question.user_id %>
+        <%= submit_tag "この質問回答者の評価をつける" %> 
+    <%end%>
+<%end%>
+<h1 class ="text-center">Answer</h1>
+<table class ="table text-center">
+<%=form_for(@answer,url:answer_path) do |f|%>
+   <tr>
+        <td>
+            <span class ="answer-text">Title</span>
+        </td>
+        <td>
+            <%=@answer.title%>
+        </td>
+    <%if @answer.status == false and @answer.question.user == current_user%>
+        <td>
+            ベストアンサー
+            <%= f.check_box :status,{}, true,nil %>
+        </td>
+    <%end%>
+
+    </tr>
+    
+    <div class="answer-text">
+    <tr>
+        <td class ="answer-text">Answer</td>
+        
+        <td colspan ="2"><div class="box7"><%=@answer.answer%></div></td>
+        
+    </tr>
+    </div>
+    <%if @answer.engineer.id == current_engineer%>
+        <tr>
+            <td colspan="3"> <%= link_to "Edit",edit_answer_path(@answer.id) ,class: " btn  btn-primary"%></td>
+        </tr>
+    <%end%>
+    <% if user_signed_in? %>
+        <%if @answer.question.user == current_user %>
+            <%if @answer.question.status == "未解決" and @answer.status != true%>
+                <tr>
+                    <td colspan ="3"><%= f.submit "この解答をベストアンサーに選んで解答の受付を終了する" ,class: "answer-submit"%></td>
+                </tr>
+            <%end%>
+        <%end%>
+    <%end%>
+<%end%>
+
+</table>
+<div class ="like text-right">
+いいね<%= render partial: 'likes/answer', locals: { answer: @answer } ,class:""%></br>
+</div>
+</div>
+</div>
+</div>

@@ -1,6 +1,8 @@
-<h1>解答編集</h1>
+
+<h1 class = "title-answer">Answer Edit</h1>
 <%= form_for(@answer,:url => {controller: "answers", :action => :update}) do |f| %>
-<table>
+<div class ="answer-table">
+<table class ="table">
 <tr>
     <td><%= f.label :title ,"title"%></td>
     <td><%= f.text_field :title %></td>
@@ -9,7 +11,12 @@
     <td><%= f.label :answer ,"answer"%></td>
     <td><%= f.text_area :answer %></td>
 </tr>
-    <%= f.hidden_field :question_id, :value =>@question.id%>
-    <td><%= f.submit "Edit"%></td>
+    
+<tr>
+    <td></td>
+    <td class ="text-center"><%= f.submit "Edit",class:"submit-answer"%></td>
+</tr>
 </table>
+</div>
 <%end%>
+

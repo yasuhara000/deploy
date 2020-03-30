@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
-        @questions = Question.where(user_id:params[:id])
+        @questions = Question.where(user_id:params[:id]).page(params[:page]).reverse_order
     end
     def edit
         @user = User.find(params[:id])
@@ -16,6 +16,6 @@ class UsersController < ApplicationController
 
     private
     def params_user
-        params.require(:user).permit(:image_id, :profile,:name)
+        params.require(:user).permit(:profile_image, :profile,:name)
     end
 end
