@@ -16,17 +16,21 @@
       <td><%= f.password_field :password, autocomplete: "current-password" %></td>
     </tr>
     </div>
-  </table>
+
+   
+   
+    <tr>
+    <div class="actions">
+      <td colspan ="2" class ="text-center"><%= f.submit "Log in", class:"submit-login" %></td>
+    </div>
+    </tr>
+    </table>
     <% if devise_mapping.rememberable? %>
       <div class="field">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </div>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
+  <% end %>
   <% end %>
 </div>
 
