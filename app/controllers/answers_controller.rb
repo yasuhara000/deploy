@@ -27,6 +27,13 @@ class AnswersController < ApplicationController
     def update
         @answer = Answer.find(params[:id]) 
         @answer.update(params_answer)
+
+        if @answer.status == true
+            question = Question.find(@answer.question.id)
+            question.update!(status: "解決済")
+        end
+
+
         redirect_to answer_path(params[:id])
     end
     private
