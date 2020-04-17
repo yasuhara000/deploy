@@ -15,9 +15,12 @@ class AnswersController < ApplicationController
         @answer = Answer.new(params_answer)
         @answer.engineer_id = current_engineer.id
         @answer.question_id = params[:answer][:question_id]
-        @answer.save!(params_answer)
-        #binding.pry
-        redirect_to answer_path(@answer)
+         
+         if @answer.save!(params_answer)
+            @answer_question = @answer.question
+            @answer_question.create_notification_answer!(current_engineer, @answer.id)
+            redirect_to answer_path(@answer)
+         end
     end
     def edit
         @answer = Answer.find(params[:id]) 

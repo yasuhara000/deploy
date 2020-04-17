@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_134955) do
+ActiveRecord::Schema.define(version: 2020_04_17_082505) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "engineer_id"
@@ -71,6 +71,20 @@ ActiveRecord::Schema.define(version: 2020_03_28_134955) do
     t.integer "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "question_id"
+    t.integer "e_visited_id"
+    t.integer "e_visiter_id"
+    t.integer "visited_id"
+    t.integer "visiter_id"
+    t.integer "answer_id"
+    t.boolean "checked", default: false, null: false
+    t.string "action"
+    t.integer "valuation_id"
   end
 
   create_table "post_tags", force: :cascade do |t|

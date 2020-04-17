@@ -19,7 +19,8 @@ class QuestionsController < ApplicationController
         @user = User.find(@question.user_id)
         impressionist(@question)
         @answer = Answer.where(question_id:params[:id])
-       
+        @engineer = current_engineer
+        #binding.pry
     end
     
     def edit

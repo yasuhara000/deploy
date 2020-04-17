@@ -11,16 +11,24 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
 }
 root to: "home#about"
-resources :users, only: [:show, :edit, :update]
+
+resources :users, only: [:show, :edit, :update] do
+  resources :notifications, only: :index 
+end
+delete 'users/:id/notifications' => 'notifications#destroy_all', as: 'destroy_all_user_notifications'
+
 resources :engineers, only: [:show, :edit, :update] do 
   resources :valuations, only:[:new, :index, :create]
 end
-
+delete 'engineers/:id/notifications' => 'notifications#destroy_all', as: 'destroy_all_engineer_notifications'
+get 'engineer/:id/notifications' => 'notifications#index', as: 'engineer_notifications'
 resources :questions, only: [:new,:show,:index,:create, :edit, :update] do
   
   resource :likes, only: [:create, :destroy]
   
 end
+
+
 resources :answers, only: [:new,:show,:create, :edit, :update,:index]
 post   '/answers/:id/likes' => 'likes#create',   as: 'like'
 delete 'answers/:id/likes' => 'likes#destroy', as: 'unlike'

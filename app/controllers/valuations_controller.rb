@@ -10,8 +10,10 @@ class ValuationsController < ApplicationController
         @valuation.user_id = current_user.id
         @valuation.engineer_id = params[:engineer_id]
         @valuation.status = params[:review][:star]
-        @valuation.save!
+       if @valuation.save!
+        @valuation.create_notification_review(current_user)
         redirect_to engineer_valuations_path
+       end
     end
     def index
         @valuations = Valuation.where(engineer_id:params[:engineer_id]).page(params[:page]).reverse_order.per(PER)

@@ -1,0 +1,20 @@
+<h3 class="text-center">通知</h3>
+<% if user_signed_in? %>
+    <%= link_to destroy_all_user_notifications_path(current_user), method: :delete do %>
+        <i class="fas fa-trash" style="color: black;"></i>
+        <h7 style="color: black;">全削除</h7>
+    <% end %>
+<%elsif engineer_signed_in? %>
+    <%= link_to destroy_all_engineer_notifications_path(current_engineer), method: :delete do %>
+        <i class="fas fa-trash" style="color: black;"></i>
+        <h7 style="color: black;">全削除</h7>
+    <% end %>
+<%end%>
+    <hr>
+<% if @notifications.exists? %>
+    <div class="users-index">
+        <%= render @notifications %>
+    </div>
+<% else %>
+    <p>通知はありません</p>
+<% end %>

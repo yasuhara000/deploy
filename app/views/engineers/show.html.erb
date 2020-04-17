@@ -10,6 +10,10 @@
             <table class ="">
                 <div class ='name-engineer'>
                     <tr>
+                        <td colspan = "2" ,class ="text-center"><%= link_to "review",engineer_valuations_path([@engineer]) ,class: "review"%></td>
+
+                    </tr>
+                    <tr>
                         <td><h2>Name</h2></td>
                         <td colspan = '2'><span class='text-engineer'><%=@engineer.nickname%></span></td>
                         
