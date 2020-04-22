@@ -19,22 +19,33 @@
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: ''%></li>
     
     <% if unchecked_notifications.any? %>
-      <i class="fa fa-circle" style="color: gold;"></i>
+      <li>
+        <%= link_to "通知", user_notifications_path(current_user), class:"btn fa fa-circle notification-circle"%>
+      </li>
+    <%else%>
+      <li class="notification">
+      <%= link_to "通知", user_notifications_path(current_user), class:"btn"%>
+      </li>
     <% end %>
-    <li>
-        <%= link_to "NOTICE", user_notifications_path(current_user), class: "btn-default" %>
-    </li>
+    
     <!-- エンジニアログイン中 -->
     <% elsif engineer_signed_in? %>
     <li><%= link_to "Questions", questions_path ,class: ''%></li>
     <li><%= link_to "マイページ", engineer_path(current_engineer)%></li>
     <li><%= link_to "ログアウト", destroy_engineer_session_path, method: :delete, class: ''%></li>
+   
+    
+    
     <% if e_unchecked_notifications.any? %>
-      <i class="fa fa-circle" style="color: gold;"></i>
-    <% end %>
     <li>
-        <%= link_to "NOTICE", engineer_notifications_path(current_engineer), class: "btn-default" %>
+      <%= link_to "通知", engineer_notifications_path(current_engineer) , class:"btn fa fa-circle notification-circle"%>
     </li>
+    <%else %>
+    <li class="notification">
+      <%= link_to "通知", engineer_notifications_path(current_engineer) , class:"btn"%>
+    </li>
+    <% end %>
+    
     <!-- ログアウト中 -->
     <% else %>
     

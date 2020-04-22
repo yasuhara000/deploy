@@ -2,13 +2,13 @@ class NotificationsController < ApplicationController
     def index
         #current_userの投稿に紐づいた通知一覧
      if user_signed_in? 
-        @notifications = current_user.passive_notifications
+        @notifications = current_user.passive_notifications.page(params[:page]).per(10)
         #@notificationの中でまだ確認していない(indexに一度も遷移していない)通知のみ
         @notifications.where(checked: false).each do |notification|
             notification.update_attributes(checked: true)
         end
     elsif engineer_signed_in? 
-        @notifications = current_engineer.passive_notifications
+        @notifications = current_engineer.passive_notifications.page(params[:page]).per(10)
         #@notificationの中でまだ確認していない(indexに一度も遷移していない)通知のみ
         @notifications.where(checked: false).each do |notification|
             notification.update_attributes(checked: true)
@@ -19,7 +19,13 @@ end
 
     def destroy_all
         #通知を全削除
-        @notifications = current_user.passive_notifications.destroy_all
-        redirect_to user_notifications_path
+        if user_signed_in? 
+            @notifications = current_user.passive_notifications.destroy_all
+            redirect_to user_notifications_path(current_user)
+        elsif engineer_signed_in? 
+            @notifications = current_engineer.passive_notifications.destroy_all
+            redirect_to engineer_notifications_path(current_engineer)
+
+        end
     end
 end

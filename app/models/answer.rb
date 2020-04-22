@@ -11,7 +11,7 @@ class Answer < ApplicationRecord
           e_visited_id: engineer_id,
           action: "like"
         )
-        notification.save if notification.valid?
+        notification.save! if notification.valid?
     end
    
 end

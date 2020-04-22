@@ -15,6 +15,7 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "font-awesome";
  .header{
     //background-image:url("<%= assets_path('header_image.png') %>");     
     background-size:cover;

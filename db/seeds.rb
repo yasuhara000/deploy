@@ -9,8 +9,8 @@ Tag.create([
     { name: 'Ruby' },
     { name: 'Python' },
     { name: 'PHP'},
-    { name: 'Css'},
-    { name: 'Html'},
+    { name: 'CSS'},
+    { name: 'HTML'},
     { name: 'Rails'},
-    { name: 'Lalabel'}
+    { name: 'Laravel'}
     ])

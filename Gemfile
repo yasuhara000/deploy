@@ -73,7 +73,7 @@ gem 'jquery-rails'
 gem 'pry-byebug'
 gem 'dotenv-rails'
 gem 'impressionist'
-
+gem 'font-awesome-rails'
 group :production do
   gem 'mysql2'
 end

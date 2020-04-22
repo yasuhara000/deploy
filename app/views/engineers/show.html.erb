@@ -7,32 +7,24 @@
             <div class ='image-engineer'>
                 <%= attachment_image_tag @engineer, :profile_image,format:'jpeg',size: "170x170",class:'img-circle' %>
             </div>
-            <table class ="">
-                <div class ='name-engineer'>
-                    <tr>
-                        <td colspan = "2" ,class ="text-center"><%= link_to "review",engineer_valuations_path([@engineer]) ,class: "review"%></td>
-
-                    </tr>
-                    <tr>
-                        <td><h2>Name</h2></td>
-                        <td colspan = '2'><span class='text-engineer'><%=@engineer.nickname%></span></td>
-                        
-                    </tr>
-                </div>
-                <tr>
-                    <div class = 'profile-engineer'>
-                        <td><h2 class='profile-engineer1'>profile</h2></td>
-                        <div class ="engineer-profile">
-                        <td  class = 'text-center'><span class='text-engineer1'><%=@engineer.profile%></span></td>
-                        </div>
-                    </div>
-                </tr>
+            <table class ="e-table">
+                        <tr>
+                            <td><%= link_to "review",engineer_valuations_path([@engineer]) ,class: "review"%></td>
+                        </tr>
+                        <tr>
+                             <td><span class ="text-engineer">Name</span></td>
+                            <td><span class='text-engineer1 text-center'><%=@engineer.nickname%></span></td>
+                        </tr>
+                        <tr>
+                            <td class ="text-engineer">profile</td>
+                            <td><span class='text-engineer1'><%=@engineer.profile%></span></td>
+                        </tr>
             </table>
             <div class = 'edit-engineer'>
-            <% if current_engineer%>
-                <%= link_to "Edit",edit_engineer_path(current_engineer) ,class: "btn btn-primary"%>
-            <%end%>
-        </div>
+                <% if current_engineer%>
+                    <%= link_to "Edit",edit_engineer_path(current_engineer) ,class: "btn btn-primary"%>
+                <%end%>
+            </div>
         </div>
         
        
