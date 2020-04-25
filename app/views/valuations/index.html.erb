@@ -1,29 +1,26 @@
 
 
 <div class ="container">
-<div class ="row">
-<h1 class ="text-center valuations-title">valuation</h1>
-
-<% @valuations.each do |f| %>
-    <div class ="valuation text-center">
-           <span>comment</span>
-            <span><%=f.comment%></span><br />
-            Star
-            <span id="star-rate-<%= f.id %>"></span>　<%=f.status%>point<br/>
-            <script>
-            $('#star-rate-<%= f.id %>').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= f.status %>,
-            });
-            </script>  
-    </div>
-
- 
-<%end%>
-</div>
+  <div class ="row">
+    <h1 class ="text-center valuations-title">レビュー</h1>
+    <% @valuations.each do |f| %>
+        <div class ="valuation text-center">
+              <span>comment</span>
+                <span><%=f.comment%></span><br />
+                Star
+                <span id="star-rate-<%= f.id %>"></span>　<%=f.status%>point<br/>
+                <script>
+                $('#star-rate-<%= f.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= f.status %>,
+                });
+                </script>  
+        </div>
+    <%end%>
+  </div>
 </div>

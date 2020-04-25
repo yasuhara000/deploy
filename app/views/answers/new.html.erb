@@ -1,26 +1,27 @@
-<h1 class = "title-answer">Answer New</h1>
+
+<h1 class = "title-answer">回答投稿</h1>
 <%= form_for(@answer,url:answers_path) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class ="answer-table">
-    <table class ="table">
-    <tr>
-        <td><%= f.label :title ,"title"%></td>
-        <td><%= f.text_field :title %></td>
-    </tr>
-    <tr>
-        <td><%= f.label :answer ,"answer"%></td>
-        <td><%= f.text_area :answer %></td>
-    </tr>
-    
-    <tr>
-        <td></td>
-        <%= f.hidden_field :status , :value => false %>
-        <%= f.hidden_field :question_id , :value => @question.id %>
-        <td class ="text-center"><%= f.submit "answer",class:"submit-answer"%></td>
-    </tr>
-        
-    </table>
+        <table class ="a-table e-table">
+            <tr>
+                <td><%= f.label :title ,"タイトル"%></td>
+                <td><%= f.text_field :title %></td>
+            </tr>
+            <tr>
+                <td><%= f.label :answer ,"回答"%></td>
+                <td><%= f.text_area :answer %></td>
+            </tr>
+            <tr>
+                <td></td>
+                <%= f.hidden_field :status , :value => false %>
+                <%= f.hidden_field :question_id , :value => @question.id %>
+                <td class ="text-center"><%= f.submit "回答する",class:"submit-answer"%></td>
+            </tr>
+        </table>
     </div>
 <%end%>
+
 
 
 

@@ -1,22 +1,30 @@
 
-<h1 class = "title-answer">Answer Edit</h1>
+<h1 class = "title-answer">回答編集</h1>
+<div class ="continar">
+<div class ="row">
 <%= form_for(@answer,:url => {controller: "answers", :action => :update}) do |f| %>
-<div class ="answer-table">
-<table class ="table">
-<tr>
-    <td><%= f.label :title ,"title"%></td>
-    <td><%= f.text_field :title %></td>
-</tr>
-<tr>
-    <td><%= f.label :answer ,"answer"%></td>
-    <td><%= f.text_area :answer %></td>
-</tr>
-    
-<tr>
-    <td></td>
-    <td class ="text-center"><%= f.submit "Edit",class:"submit-answer"%></td>
-</tr>
-</table>
-</div>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class ="answer-table">
+       
+            <div class ="col-xs-12 ">
+                <table class ="a-table e-table">
+                    <tr>
+                        <td><%= f.label :title ,"タイトル"%></td>
+                        <td><%= f.text_field :title %></td>
+                    </tr>
+                    <tr>
+                        <td><%= f.label :answer ,"回答"%></td>
+                        <td><%= f.text_area :answer %></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class ="text-center">
+                            <%= f.submit "編集する",class:"submit-answer"%>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+    </div>
 <%end%>
 

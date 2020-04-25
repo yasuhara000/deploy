@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_082505) do
+ActiveRecord::Schema.define(version: 2020_04_25_095716) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "engineer_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_082505) do
     t.string "last_name"
     t.text "profile"
     t.string "profile_image_id"
-    t.string "nickname"
+    t.string "name"
     t.index ["email"], name: "index_engineers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_engineers_on_reset_password_token", unique: true
   end
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_082505) do
     t.string "last_name"
     t.text "profile"
     t.string "profile_image_id"
-    t.string "nickname"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

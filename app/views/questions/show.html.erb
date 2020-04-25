@@ -1,58 +1,62 @@
 <div class ='container'>
     <div class ='row'>
-  
-                <div class ="col-xs-2">
-                    <h1>Question </h1>
-                    <div  class ="question-td">Name</div><br />
-                    <div  class ="question-td">Tag</div><br />
-                    <div  class ="question-td">Title</div><br />
-                    <div class ="question-td">Question</div><br />
-                    <%if engineer_signed_in? %>
-                    <%= form_tag(new_answer_path, method: "get") do %>
-                            <%= hidden_field_tag :question_id , @question.id %>
-                            <%= submit_tag "この質問に解答する"  ,class: "answer-submit1"%> 
-                        <%end%>
-                    <%end%>
-                    <%if @question.user_id == current_user %>
-                        <div class ="question-edit>"><%= link_to "Edit",edit_question_path(@question.id) ,class: "question-edit"%></div>
+        <div class ="col-xs-2">
+            <h1>質問</h1>
+            <div  class ="question-td">名前</div><br />
+            <div  class ="question-td">タグ</div><br />
+            <div  class ="question-td">タイトル</div><br />
+            <div class ="question-td">質問</div><br />
+            <%if engineer_signed_in? %>
+                <%= form_tag(new_answer_path, method: "get") do %>
+                    <%= hidden_field_tag :question_id , @question.id %>
+                    <%= submit_tag "この質問に解答する"  ,class: "answer-submit1"%> 
+                <%end%>
+            <%end%>
+            <%if @question.user_id == current_user %>
+                <div class ="question-edit>"><%= link_to "Edit",edit_question_path(@question.id) ,class: "question-edit"%></div>
+            <%end%>
+        </div>
+        <div class ="col-xs-4 question-text">
+            <div class ="question-td">
+                <span class ="PV">PV数<%=  @question.impressions_count %></span>
+            </div>
+            <div class ="question-td">
+                <%= @question.user.name%>
+            </div>
+            <div class ="question-td question-tag">
+                <% @question.tags.each do |tag| %>
+                    <%= tag.name %>
+                <% end %><br/>
+            </div>
+            <div class ="question-title">
+                <%= @question.title%> <br/>
+            </div>
+            <div class="box7 ">
+                <span class ="question-question"><%= @question.question%></span>
+            </div>
+            <% if user_signed_in? %>
+                <div class ="text-center">
+                    <%if @question.user.id == current_user.id %>
+                        <%= link_to "編集",edit_question_path(@question.id) ,class: " btn  btn-primary "%>
                     <%end%>
                 </div>
-                <div class ="col-xs-4 question-text">
-                    <div class ="question-td">
-                        <span class ="PV">PV数<%=  @question.impressions_count %></span>
-                    </div>
-                    <div class ="question-td">
-                        <%= @question.user.nickname%>
-                    </div>
-                            <div class ="question-td question-tag">
-                                <% @question.tags.each do |tag| %>
-                                    <%= tag.name %>
-                                <% end %><br/>
-                            </div>
-                            <div class ="question-title">
-                                <%= @question.title%> <br/>
-                            </div>
-                        
-                                <div class="box7 ">
-                                    <span class ="question-question"><%= @question.question%></span>
-                                </div>
-                </div>
-                
+            <%end%>
+        </div>
         <div class ="col-xs-6">
-        <h1>Answers</h1>
+            <h1>回答一覧</h1>
             <table class ="table">
-                    <tr>
-                        <td></td>
-                        <td>name</td>
-                        <td>title</td>
-                        <td>いいね数</td>
-                        <td>status</td>
-                    </tr>
-                    <% @answer.each do |ans|%>
+                <tr>
+                    <td></td>
+                    <td>名前</td>
+                    <td>タイトル</td>
+                    <td>いいね数</td>
+                    <td>状態</td>
+                </tr>
+                <% @answer.each do |ans|%>
                     <tr>
                         <td><%= attachment_image_tag ans.engineer, :profile_image,format:'jpeg',size: "30x30" %></td>
                         <td>
-                        <%= link_to ans.engineer.nickname,engineer_path(ans.engineer.id)%>
+                        <%= link_to ans.engineer.name,engineer_path(ans.engineer.id)%>
                         </td>
                         
                         <td><%= link_to ans.title,answer_path( ans.id) %></td>
@@ -63,15 +67,11 @@
                         <td>
                             <%if ans.status == true%>
                                 <span>best</span>
-                            
                             <%end%>
                         </td>
                     </tr>
-                    <%end%>
-               
+                <%end%>       
             </table>
-        </div>
-        
-
+        </div>     
 </div>
 </div>

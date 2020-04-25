@@ -1,39 +1,42 @@
 <div class ="container">
-<div class ="row">
-
-
-    <div class ="engineer-name"> <%=@engineer.nickname%>さんへの評価</div>
-
-
-<%= form_for(@valuation,url:engineer_valuations_path ) do |f| %>
-    
-    <%= f.hidden_field :status, id: :review_star %>
-<div class ="valuation-table">
-    <table class="table text-center">
-    <tr>
-        <td><%= f.label :status ,"Star"%></td>
-        <td><div id="star"></div></td>
-        
-        <%= f.hidden_field :status, id: :review_star %>
-    </tr>
-    
-    <tr>
-        <td><%= f.label :comment ,"comment"%></td>
-        <td><%= f.text_area :comment %></td>
-    </tr>
-    <td></td>
-        <td colspan ="2" class ="text-center"><%= f.submit "評価をつける" ,class: "valuation-submit"%></td>
-    </table>
-</div>
-    <%end%>
-    <script>
-    $('#star').raty({
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      scoreName: 'review[star]' 
-    });
-    </script>
-
-</div>
+    <div class ="row">
+        <% if @valuation.errors.any? %>
+            <ul>
+                <% @valuation.errors.full_messages.each  do |message| %>
+                    <li>error</li>
+                    <li><%= message %></li>
+                <%end%>
+            </ul>
+        <%end%>
+        <div class ="engineer-name"> <%=@engineer.name%>さんへの評価</div>
+        <%= form_for(@valuation,url:engineer_valuations_path ) do |f| %> 
+            <%= f.hidden_field :status, id: :review_star %>
+            <div class ="valuation-table">
+                <table class="table text-center">
+                    <tr>
+                        <td><%= f.label :status ,"Star"%></td>
+                        <td><div id="star"></div></td>
+                        
+                        <%= f.hidden_field :status, id: :review_star %>
+                    </tr>
+                    <tr>
+                        <td><%= f.label :comment ,"comment"%></td>
+                        <td><%= f.text_area :comment %></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan ="2" class ="text-center"><%= f.submit "評価をつける" ,class: "valuation-submit"%></td>
+                    </tr>
+                </table>
+            </div>
+        <%end%>
+            <script>
+                $('#star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                scoreName: 'review[star]' 
+                });
+            </script>
+    </div>
 </div>

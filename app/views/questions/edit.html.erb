@@ -1,36 +1,38 @@
 <div class ="container">
-<h1 class ="question-title">Question Edit</h1>
-<div class ="row">
-<div class ="question-table">
-<table class ="table">
-<%= form_for(@question,url:question_path) do |f| %>
-  <tr> 
-  <td>label</td>
-  <td>
-  <%=f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-          <%= tag.label do %>
-            <%= tag.check_box %>
-            <%= tag.text %>
-          <% end %>    
-    <%end%>
-    </td>
-  </tr>
-<tr>
-    <td><%= f.label :title ,"title"%></td>
-    <td class ="question-title"><%= f.text_field :title %></td>
-</tr>
-<tr>
-    <td><%= f.label :question ,"question"%></td>
-    <td><%= f.text_area :question , class:"form-control form" %></td>
-</tr>
-<tr>
-    
-    <td></td>
-    <td class ="text-center"><%= f.submit "Edit" ,class: "question-edit-submit"%></td>
-</tr>
-<%end%>
-</table>
-
-</div>
-</div>
+  <h1 class ="question-title">質問編集</h1>
+  <div class ="row">
+      
+    <div class ="question-table">
+      <table class ="table">
+        <%= form_for(@question,url:question_path) do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
+          <tr> 
+            <td>タグ</td>
+            <td>
+              <%=f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                  <%= tag.label do %>
+                    <%= tag.check_box %>
+                    <%= tag.text %>
+                  <% end %>    
+              <%end%>
+              </td>
+          </tr>
+          <tr>
+              <td class ="q-title"><%= f.label :title ,"タイトル"%></td>
+              <td class ="question-title"><%= f.text_field :title %></td>
+          </tr>
+          <tr>
+              <td><%= f.label :question ,"質問"%></td>
+              <td><%= f.text_area :question , class:"form-control form" %></td>
+          </tr>
+          <tr>
+              
+              <td></td>
+              <td class ="text-center"><%= f.submit "Edit" ,class: "question-edit-submit"%></td>
+          </tr>
+        <%end%>
+      </table>
+      
+    </div>
+  </div>
 </div>

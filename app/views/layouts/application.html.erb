@@ -9,59 +9,51 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
     <body>
-    <header class="header">
-    <span class="gp">　Gather　Programmer　</span>
-    <ul class="navber-right">
-    <% if user_signed_in? %>
-    <li><%= link_to "Questions", questions_path ,class: ''%></li>
-    <li><%= link_to "マイページ", user_path(current_user)%></li>
-    <li><%= link_to "質問する", new_question_path%></li>
-    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: ''%></li>
-    
-    <% if unchecked_notifications.any? %>
-      <li>
-        <%= link_to "通知", user_notifications_path(current_user), class:"btn fa fa-circle notification-circle"%>
-      </li>
-    <%else%>
-      <li class="notification">
-      <%= link_to "通知", user_notifications_path(current_user), class:"btn"%>
-      </li>
-    <% end %>
-    
-    <!-- エンジニアログイン中 -->
-    <% elsif engineer_signed_in? %>
-    <li><%= link_to "Questions", questions_path ,class: ''%></li>
-    <li><%= link_to "マイページ", engineer_path(current_engineer)%></li>
-    <li><%= link_to "ログアウト", destroy_engineer_session_path, method: :delete, class: ''%></li>
-   
-    
-    
-    <% if e_unchecked_notifications.any? %>
-    <li>
-      <%= link_to "通知", engineer_notifications_path(current_engineer) , class:"btn fa fa-circle notification-circle"%>
-    </li>
-    <%else %>
-    <li class="notification">
-      <%= link_to "通知", engineer_notifications_path(current_engineer) , class:"btn"%>
-    </li>
-    <% end %>
-    
-    <!-- ログアウト中 -->
-    <% else %>
-    
-    <li><%= link_to "トップページ", root_path ,class: ''%></li>
-    <li><%= link_to "Questions", questions_path ,class: ''%></li>
-    <% end %>
-  </ul>
-  </header>
+      <header class="header">
+        <span class="gp">　Gather　Programmer　</span>
+        <ul class="navber-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "質問一覧", questions_path ,class: ''%></li>
+            <li><%= link_to "マイページ", user_path(current_user)%></li>
+            <li><%= link_to "質問する", new_question_path%></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: ''%></li>
+            
+            <% if unchecked_notifications.any? %>
+              <li>
+                <%= link_to "通知", user_notifications_path(current_user), class:"btn fa fa-circle notification-circle"%>
+              </li>
+            <%else%>
+              <li class="notification">
+              <%= link_to "通知", user_notifications_path(current_user), class:"btn"%>
+              </li>
+            <% end %>
+            
+          <!-- エンジニアログイン中 -->
+          <% elsif engineer_signed_in? %>
+              <li><%= link_to "質問一覧", questions_path ,class: ''%></li>
+              <li><%= link_to "マイページ", engineer_path(current_engineer)%></li>
+              <li><%= link_to "ログアウト", destroy_engineer_session_path, method: :delete, class: ''%></li>
+            <% if e_unchecked_notifications.any? %>
+              <li>
+                <%= link_to "通知", engineer_notifications_path(current_engineer) , class:"btn fa fa-circle notification-circle"%>
+              </li>
+            <%else %>
+              <li class="notification">
+                <%= link_to "通知", engineer_notifications_path(current_engineer) , class:"btn"%>
+              </li>
+            <% end %>
+          <!-- ログアウト中 -->
+          <% else %>
+          <li><%= link_to "トップページ", root_path ,class: ''%></li>
+          <li><%= link_to "質問一覧", questions_path ,class: ''%></li>
+          <% end %>
+      </ul>
+    </header>
 
   </body>
-
-
-    <%= yield %>
-    
+    <%= yield %> 
   <footer class = "footer">
-   </footer>
+  </footer>
    
 
 </html>

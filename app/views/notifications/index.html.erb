@@ -3,7 +3,6 @@
         <h3 class="text-center">通知</h3>
         <% if user_signed_in? %>
             <%= link_to destroy_all_user_notifications_path(current_user), method: :delete do %>
-                
                 <h4 style="color: black;">全削除</h4>
             <% end %>
         <%elsif engineer_signed_in? %>

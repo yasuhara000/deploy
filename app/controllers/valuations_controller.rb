@@ -1,4 +1,5 @@
 class ValuationsController < ApplicationController
+    before_action :authenticate_user!, only: [:new,:create]
     PER = 5
     def new
         @valuation = Valuation.new
@@ -15,9 +16,12 @@ class ValuationsController < ApplicationController
         redirect_to engineer_valuations_path
        end
     end
+
     def index
         @valuations = Valuation.where(engineer_id:params[:engineer_id]).page(params[:page]).reverse_order.per(PER)
     end
+
+    private
     def params_valuation
         params.require(:valuation).permit(:title, :comment,:status,:engineer_id)
     end
