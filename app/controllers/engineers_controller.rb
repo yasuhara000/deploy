@@ -7,6 +7,9 @@ class EngineersController < ApplicationController
 
     def edit
         @engineer = Engineer.find(params[:id])
+        if @engineer != current_engineer
+            redirect_to engineer_path(@engineer)
+        end
     end
 
     def update

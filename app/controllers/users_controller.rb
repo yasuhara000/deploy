@@ -7,6 +7,9 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
+        if @user != current_engineer
+            redirect_to user_path(@user)
+        end
     end
 
     def update

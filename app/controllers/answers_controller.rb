@@ -27,6 +27,9 @@ class AnswersController < ApplicationController
 
     def edit
         @answer = Answer.find(params[:id]) 
+        if @answer.engineer != current_engineer
+            redirect_to answer_path(@answer)
+        end
     end
 
     def update
