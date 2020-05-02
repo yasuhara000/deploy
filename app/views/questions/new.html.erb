@@ -8,7 +8,7 @@
         <%= form_for(@question,url:questions_path) do |f| %>
           <%= render 'layouts/error_messages', model: f.object %>
           <tr> 
-            <td>タグ1</td>
+            <td>タグ</td>
             <td>
               <%=f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
                       <%= tag.label do %>
