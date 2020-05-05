@@ -73,7 +73,7 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'pry-byebug'
 gem 'dotenv-rails'
-gem 'impressionist'
+gem 'impressionist','~> 1.6.0'
 gem 'font-awesome-rails'
 group :production do
   gem 'mysql2'

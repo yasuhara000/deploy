@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
         @question = Question.find(params[:id])
         @user = User.find(@question.user_id)
         impressionist(@question)
+        @view = @question.impressionist_count
         @answer = Answer.where(question_id:params[:id])
         @engineer = current_engineer
     end
