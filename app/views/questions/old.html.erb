@@ -1,0 +1,24 @@
+<div class ='container'>
+    <div class ='row text-center'>
+        <h2>一週間以上解決していない質問一覧</h2>
+        <table class ='table'>
+            <tr>
+                <td></td>
+                <td>name</td>
+                <td>question</td>
+            </tr>
+            <% @questions.each do |question| %>
+                <tr>
+                    <%= link_to user_path(question.user) do%>
+                        <div class= "image">
+                            <td><%= attachment_image_tag question.user, :profile_image,format:'jpeg',size: "30x30" %></td>
+                        </div>
+                    <%end%>
+                    <td><%= link_to question.user.name,user_path(question.user.id)%></td>
+                    <td><%= link_to question.title,question_path(question.id) %></td>
+                </tr>
+            <%end%>
+            <%= paginate @questions, class: "paginate" %>
+        </table>
+    </div>
+</div>

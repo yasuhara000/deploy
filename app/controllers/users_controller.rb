@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user!, only: [:edit,:update]
+    before_action :authenticate_user!, only: [:edit,:update,:show]
     def show
         @user = User.find(params[:id])
         @questions = Question.where(user_id:params[:id]).page(params[:page]).reverse_order

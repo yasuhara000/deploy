@@ -1,4 +1,4 @@
-<div class ="container">
+<div class ="container user-container">
     <div class ="row">
         <h1 lass ='title'>プロフィール</h1>
         <div class ='col-xs-6 '>
@@ -26,18 +26,18 @@
             </table>
         </div>
         <div class ='col-xs-6 text-center'>
-            <h2 class ='text-center user-question'>質問一覧</h2>
+            <h2 class ='text-center user-question'><%= @user.name %>の質問</h2>
             <table class ='table'>
                 <tr>
                     <td>タイトル</td>
-                    <td>状態</td>
                     <td>回答数</td>
+                    <td></td>
                 </tr>
                 <% @questions.each do |f|%>
                     <tr> 
                         <td><%= link_to f.title,question_path(f.id),class:'question'%></td>
-                        <td> <%= f.status%></td>
-                        <td><%= f.answers.count%>
+                        <td> <%= f.answers.count%></td>
+                        <td><%= f.status%>
                     </tr>
                 <%end%>
             </table>

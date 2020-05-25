@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
     #impressionist :actions=> [:show]
-    before_action :authenticate_user!, only: [:new,:update,:new]
+    before_action :authenticate_user!, only: [:new,:update,]
     def new
         @question = Question.new
     end
@@ -14,6 +14,7 @@ class QuestionsController < ApplicationController
             render :new
         end
     end
+    
 
     def show
         @question = Question.find(params[:id])
@@ -47,15 +48,29 @@ class QuestionsController < ApplicationController
             questions = params[:tag_id].present? ? Tag.find(params[:tag_id]).questions : Question.all
             @questions = questions.page(params[:page]).reverse_order
         elsif (params[:search]) and params[:tag_id] == ""
-            @questions = Question.search(params[:search]).order('impressions_count DESC').page(params[:page]).reverse_order
+            @questions = Question.search(params[:search]).page(params[:page]).reverse_order
         elsif params[:tag_id]=="" and params[:search]== ""
             @questions = Question.page(params[:page]).reverse_order
         else
             questions = params[:tag_id].present? ? Tag.find(params[:tag_id]).questions : Question.all
-            @questions = questions.search(params[:search]).order('impressions_count DESC').page(params[:page]).reverse_order
+            @questions = questions.search(params[:search]).page(params[:page]).reverse_order
         end
     end
-    
+
+    def pv
+        @questions = Question.page(params[:page]).order('impressions_count').limit(5).reverse_order
+    end
+
+    def unanswer
+        @questions = Question.where(status:"未解決")
+    end
+
+    def old
+        now = Time.now
+        sevendays_ago = now - (60*60*24*7)
+        @questions = Question.where(created_at: 3.months.ago..1.week.ago).where(status:"未解決").page(params[:page]).reverse_order
+    end
+
     private
     def params_question
         params.require(:question).permit(:title, :question, :status, :answer["id"],tag_ids: [],answer_attributes: [:id ,:status])

@@ -2,7 +2,6 @@ class Valuation < ApplicationRecord
     belongs_to :user
     belongs_to :engineer
     has_many :notifications, dependent: :destroy
-    validates :title, presence: true
     validates :comment, presence: true
     validates :status, presence: true
     def create_notification_review(current_user)

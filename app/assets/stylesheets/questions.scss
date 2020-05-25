@@ -82,3 +82,40 @@
 }.q-title{
     font-size: 11px;
 }
+.btn-flat-vertical-border {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-left: solid 4px #668ad8;
+    border-right: solid 4px #668ad8;
+    color: #668ad8;
+    background: #e1f3ff;
+    transition: .4s;
+    margin: 10px;
+  }
+  
+  .btn-flat-vertical-border:hover {
+    background: #668ad8;
+    color: #FFF;
+  }
+  .question_pv{
+     margin-right: 50px;
+  }
+.question_pv_marigin{
+    margin-left: 250px;
+}
+.old_title{
+    color: #364e96;/*文字色*/
+    padding: 0.5em 0;/*上下の余白*/
+    border-top: solid 3px #364e96;/*上線*/
+    border-bottom: solid 3px #364e96;/*下線*/
+}
+.old-content{
+    position: relative;
+    padding-bottom: 60px;
+}
+.ranking{
+    color: blue;
+}

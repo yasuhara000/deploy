@@ -22,6 +22,8 @@ resources :engineers, only: [:show, :edit, :update] do
 end
 delete 'engineers/:id/notifications' => 'notifications#destroy_all', as: 'destroy_all_engineer_notifications'
 get 'engineer/:id/notifications' => 'notifications#index', as: 'engineer_notifications'
+get 'questions/old' => 'questions#old', as:'old_question'
+get 'questions/pv' => 'questions#pv', as:'pv_question'
 resources :questions, only: [:new,:show,:index,:create, :edit, :update] do
   
   resource :likes, only: [:create, :destroy]
@@ -35,5 +37,6 @@ delete 'answers/:id/likes' => 'likes#destroy', as: 'unlike'
 get 'home' => "home#about", as: 'home'
 get 'home/user_log' => "home#user_log", as:'user_log'
 get 'home/engineer_log' => "home#engineer_log", as:'engineer_log'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

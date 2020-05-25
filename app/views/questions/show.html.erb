@@ -5,7 +5,7 @@
             <div  class ="question-td">名前</div><br />
             <div  class ="question-td">タグ</div><br />
             <div  class ="question-td">タイトル</div><br />
-            <div class ="question-td">質問</div><br />
+            <div class ="question-td">質問内容</div><br />
             <%if engineer_signed_in? %>
                 <%= form_tag(new_answer_path, method: "get") do %>
                     <%= hidden_field_tag :question_id , @question.id %>
@@ -43,14 +43,14 @@
             <%end%>
         </div>
         <div class ="col-xs-6">
-            <h1>回答一覧</h1>
+            <h2 class ="text-center">この質問に対する回答一覧</h2>
             <table class ="table">
                 <tr>
                     <td></td>
                     <td>名前</td>
                     <td>タイトル</td>
                     <td>いいね数</td>
-                    <td>状態</td>
+                    <td></td>
                 </tr>
                 <% @answer.each do |ans|%>
                     <tr>

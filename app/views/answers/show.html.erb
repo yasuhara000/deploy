@@ -9,7 +9,7 @@
                     <%= submit_tag "この質問回答者の評価をつける" %> 
                 <%end%>
             <%end%>
-            <h1 class ="text-center">Answer</h1>
+            <h1 class ="text-center"><%=@answer.question.title%>への回答</h1>
             <table class ="table text-center">
                 <%=form_for(@answer,url:answer_path) do |f|%>
                 <tr>

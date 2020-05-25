@@ -1,7 +1,7 @@
 <div class ='container'>
     <div class ='row text-center'>
-        <h2> Questions</h2>
-        <p>検索</p>
+        <h2> みんなの質問</h2>
+        
         <%= form_tag(questions_path,:method => 'get') do %>
             <%= text_field_tag :search %>
             <%= select_tag :tag_id,
@@ -11,13 +11,19 @@
                                 
                                 }
             %>
-            <%= submit_tag 'Search', :name => nil %>
+            <%= submit_tag '検索', :name => nil %>
         <% end %>
+            
+                <%=link_to "PV数Best5",pv_question_path,class:"btn-flat-vertical-border"%>
+            
+            
+                <%=link_to "未解決の質問",old_question_path,class:"btn-flat-vertical-border"%>
+            
         <table class ='table'>
             <tr>
             <td></td>
             <td>name</td>
-            <td>question</td>
+            <td>title</td>
             </tr>
             <% @questions.each do |question| %>
                 <tr>
@@ -30,7 +36,12 @@
                     <td><%= link_to question.title,question_path(question.id) %></td>
                 </tr>
             <%end%>
-            <%= paginate @questions, class: "paginate" %>
+            <tr>
+                <td colspan ="3", class ="text-center">
+                    <%= paginate @questions, class: "paginate" %>
+                </td>
+            </tr>
+            
         </table>
     </div>
 </div>
